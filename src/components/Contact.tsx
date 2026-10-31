@@ -57,8 +57,10 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
                   </div>
                   <div>
                     <strong className="block text-slate-900 font-bold">Localização:</strong>
-                    <span>{c.endereco.cidade} — {c.endereco.estado}</span>
-                    <span className="block text-xs text-slate-500 mt-0.5">{c.endereco.referencia}</span>
+                    <span>{c.endereco_completo || `${c.endereco?.cidade || 'Uberaba'} — ${c.endereco?.estado || 'MG'}`}</span>
+                    {(c.ponto_referencia || c.endereco?.referencia) && (
+                      <span className="block text-xs text-slate-500 mt-0.5">{c.ponto_referencia || c.endereco?.referencia}</span>
+                    )}
                   </div>
                 </div>
 
@@ -69,12 +71,12 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
                   <div>
                     <strong className="block text-slate-900 font-bold">WhatsApp & Atendimento:</strong>
                     <a
-                      href={c.telefones.whatsapp_link}
+                      href={c.whatsapp_link || c.telefones?.whatsapp_link || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-pink-600 font-bold hover:underline"
                     >
-                      {c.telefones.whatsapp}
+                      {c.whatsapp || c.telefone || c.telefones?.whatsapp || '(34) 98849-9829'}
                     </a>
                   </div>
                 </div>
@@ -85,7 +87,7 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
                   </div>
                   <div>
                     <strong className="block text-slate-900 font-bold">E-mail:</strong>
-                    <span className="text-slate-600">{c.emails.geral}</span>
+                    <span className="text-slate-600">{c.email_geral || c.emails?.geral || 'sglowparty@gmail.com'}</span>
                   </div>
                 </div>
 
@@ -95,7 +97,7 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
                   </div>
                   <div>
                     <strong className="block text-slate-900 font-bold">Horário de Acolhimento:</strong>
-                    <span className="text-slate-600 text-xs">{c.horario_atendimento}</span>
+                    <span className="text-slate-600 text-xs">{c.horario_funcionamento || c.horario_atendimento || 'Segunda a Sábado'}</span>
                   </div>
                 </div>
               </div>
@@ -105,7 +107,7 @@ export const Contact: React.FC<ContactProps> = ({ config }) => {
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-3">Rede Social:</span>
                 <div className="flex gap-3">
                   <a
-                    href={c.redes_sociais.instagram}
+                    href={c.redes_sociais?.instagram || 'https://instagram.com/spaglowparty'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 rounded-xl bg-pink-50 text-pink-700 hover:bg-pink-600 hover:text-white transition-all flex items-center gap-2 font-bold text-xs"

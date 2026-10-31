@@ -171,30 +171,38 @@ export interface SiteConfig {
   contato: {
     titulo: string;
     subtitulo: string;
-    endereco: {
-      logradouro: string;
-      bairro: string;
-      cidade: string;
-      estado: string;
-      cep: string;
-      referencia: string;
+    endereco_completo?: string;
+    ponto_referencia?: string;
+    telefone?: string;
+    whatsapp?: string;
+    whatsapp_link?: string;
+    email_geral?: string;
+    email_doacoes?: string;
+    horario_funcionamento?: string;
+    endereco?: {
+      logradouro?: string;
+      bairro?: string;
+      cidade?: string;
+      estado?: string;
+      cep?: string;
+      referencia?: string;
     };
-    telefones: {
-      principal: string;
-      whatsapp: string;
-      whatsapp_link: string;
+    telefones?: {
+      principal?: string;
+      whatsapp?: string;
+      whatsapp_link?: string;
     };
-    emails: {
-      geral: string;
-      voluntariado: string;
-      parcerias: string;
+    emails?: {
+      geral?: string;
+      voluntariado?: string;
+      parcerias?: string;
     };
-    horario_atendimento: string;
+    horario_atendimento?: string;
     redes_sociais: {
-      instagram: string;
-      facebook: string;
-      youtube: string;
-      linkedin: string;
+      instagram?: string;
+      facebook?: string;
+      youtube?: string;
+      linkedin?: string;
     };
     mapa_embed_url: string;
   };

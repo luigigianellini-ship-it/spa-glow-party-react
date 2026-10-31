@@ -73,21 +73,21 @@ export const Footer: React.FC<FooterProps> = ({ config, onOpenDonate, onOpenVolu
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-pink-500 shrink-0" />
-                <span>{c.endereco.cidade} — {c.endereco.estado}</span>
+                <span>{c.endereco_completo || `${c.endereco?.cidade || 'Uberaba'} — ${c.endereco?.estado || 'MG'}`}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-pink-500 shrink-0" />
-                <a href={c.telefones.whatsapp_link} target="_blank" rel="noopener noreferrer" className="hover:text-pink-400">
-                  {c.telefones.whatsapp}
+                <a href={c.whatsapp_link || c.telefones?.whatsapp_link || '#'} target="_blank" rel="noopener noreferrer" className="hover:text-pink-400">
+                  {c.whatsapp || c.telefone || c.telefones?.whatsapp || '(34) 98849-9829'}
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-pink-500 shrink-0" />
-                <span>{c.emails.geral}</span>
+                <span>{c.email_geral || c.emails?.geral || 'sglowparty@gmail.com'}</span>
               </li>
               <li className="pt-2">
                 <a
-                  href={c.redes_sociais.instagram}
+                  href={c.redes_sociais?.instagram || 'https://instagram.com/spaglowparty'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 text-pink-400 hover:bg-pink-600 hover:text-white transition-all text-xs font-semibold"
